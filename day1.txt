@@ -1,0 +1,83 @@
+su root
+    2  who
+    3  whoami
+    4  su root
+    5  ls -la
+    6  ls --help
+    7  ls -la
+    8  ls -la /bin/sh
+    9  uname
+   10  history
+   11  uname -a
+   12  uname --help
+   13  uname -v
+   14  uname -av
+   15  uname -rv
+   16  uname -r
+   17  man uname
+   18  uname --examples
+   19  ls -l
+   20  ls -la
+   21  ls -lah
+   22  ls -h
+   23  ls -ah
+   24  mkdir file1
+   25  cd file1/
+   26  ls bash_profile
+   27  cd ..
+   28  ls bash_profile
+   29  cat bash_profile
+   30  sudo cat bash_profile
+   31  sudo cat .bash_profile
+   32  cd file1/
+   33  touch f1,f2
+   34  echo hello
+   35  echo hello world
+   36  ls
+   37  ls -l
+   38  touch f3 f4
+   39  ls
+   40  ls -l
+   41  cp f1,f2 f1
+   42  ls -l
+   43  mv f1,f2 f2
+   44  ls -l
+   45  vi f1
+   46  cat f1
+   47  more f1
+   48  less f1
+   49  nano f2
+   50  cat f2
+   51  nslookup
+   52  ls /usr/bin
+   53  history
+   54  useradd amit
+   55  sudo useradd amit
+   56  sudo passwd amit
+   57  su amit
+   58  whoami
+   59  su - amit
+   60  su amit
+   61  su - amit
+   62  vi /etc/hosts
+   63  su
+   64  sudo whoami
+   65  su root
+   66  cd ..
+   67  cd /etc
+   68  ls
+   69  cat sudoers
+   70  sudo cat sudoers
+   71  sudo visudo sudoers
+   72  sudo visudo
+   73  groups amit
+   74  groups admin2316
+   75  sudo visudo
+   76  su amit
+   77  sudo - amit
+   78  su - amit
+   79  which ip
+   80  which cd
+   81  sudo visudo
+   82  su - amit
+   83  history
