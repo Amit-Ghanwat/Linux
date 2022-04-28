@@ -1,0 +1,310 @@
+   1  man useradd
+    2  useradd --help
+    3  find cd
+    4  touch one
+    5  find one
+    6  find *ne
+    7  useradd jsmith -c "Jane smith" -e "2022/04/27" -s /bin/dash -d /home/jane_smith
+    8  sudo useradd jsmith -c "Jane smith" -e "2022/04/27" -s /bin/dash -d /home/jane_smith
+    9  users
+   10  sudo id jsmith
+   11  sudo id admin2316
+   12  userdel --help
+   13  sudo useradd test
+   14  sudo id test
+   15  sudo userdel test
+   16  sudo useradd test
+   17  sudo userdel -r test
+   18  sudo useradd test
+   19  usermod --help
+   20  sudo usermod test -c "test user"
+   21  who
+   22  w
+   23  id
+   24  id test
+   25  cat /etc/passwd
+   26  sudo passwd test
+   27  passwd --help
+   28  chage --help
+   29  chage -l test
+   30  sudo chage -l
+   31  sudo chage -l test
+   32  cd /home
+   33  ls
+   34  sudo ls -la ./test
+   35  sudo ls -la ./jsmith
+   36  sudo ls -la ./jane_smith
+   37  sudo useradd -d
+   38  sudo useradd -D
+   39  cd /etc/skel/
+
+ cd /etc/skel
+[admin2316@vm1 skel]$ ls
+[admin2316@vm1 skel]$ ls -la
+total 24
+drwxr-xr-x.  2 root root   62 Feb  7 21:48 .
+drwxr-xr-x. 85 root root 8192 Apr 27 04:54 ..
+-rw-r--r--.  1 root root   18 Nov 24 16:33 .bash_logout
+-rw-r--r--.  1 root root  193 Nov 24 16:33 .bash_profile
+-rw-r--r--.  1 root root  231 Nov 24 16:33 .bashrc
+[admin2316@vm1 skel]$ sudo vim ./.vimrc
+[admin2316@vm1 skel]$ ls -la
+total 28
+drwxr-xr-x.  2 root root   76 Apr 27 05:16 .
+drwxr-xr-x. 85 root root 8192 Apr 27 04:54 ..
+-rw-r--r--.  1 root root   18 Nov 24 16:33 .bash_logout
+-rw-r--r--.  1 root root  193 Nov 24 16:33 .bash_profile
+-rw-r--r--.  1 root root  231 Nov 24 16:33 .bashrc
+-rw-r--r--.  1 root root   11 Apr 27 05:16 .vimrc
+[admin2316@vm1 skel]$ sudo usedd zach
+sudo: usedd: command not found
+[admin2316@vm1 skel]$ sudo useradd zach
+[admin2316@vm1 skel]$ cd ~
+[admin2316@vm1 ~]$ ls
+one
+[admin2316@vm1 ~]$ cd /home/
+[admin2316@vm1 home]$ ls
+admin2316  jane_smith  test  zach
+[admin2316@vm1 home]$ sudo ls -la ./zach
+total 16
+drwx------. 2 zach zach  76 Apr 27 05:16 .
+drwxr-xr-x. 6 root root  65 Apr 27 05:16 ..
+-rw-r--r--. 1 zach zach  18 Nov 24 16:33 .bash_logout
+-rw-r--r--. 1 zach zach 193 Nov 24 16:33 .bash_profile
+-rw-r--r--. 1 zach zach 231 Nov 24 16:33 .bashrc
+-rw-r--r--. 1 zach zach  11 Apr 27 05:16 .vimrc
+[admin2316@vm1 home]$ su zach
+Password:
+su: Authentication failure
+[admin2316@vm1 home]$ sudo passwd
+Changing password for user root.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+[admin2316@vm1 home]$ sudo passwd zach
+Changing password for user zach.
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+[admin2316@vm1 home]$ su zach
+Password:
+[zach@vm1 home]$ vi one
+
+[No write since last change]
+/bin/bash: q: command not found
+
+shell returned 127
+
+Press ENTER or type command to continue
+[No write since last change]
+
+Press ENTER or type command to continue
+[No write since last change]
+
+Press ENTER or type command to continue
+[zach@vm1 home]$
+[zach@vm1 home]$ sudo less /etc/login.defs
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for zach:
+zach is not in the sudoers file.  This incident will be reported.
+[zach@vm1 home]$ su root
+Password:
+[root@vm1 home]# sudo less /etc/login.defs
+[root@vm1 home]# cd /etc/useradd
+bash: cd: /etc/useradd: No such file or directory
+[root@vm1 home]# cd /etc/default
+[root@vm1 default]# ls -la
+total 24
+drwxr-xr-x.  2 root root   44 Feb  7 21:56 .
+drwxr-xr-x. 85 root root 8192 Apr 27 05:18 ..
+-rw-r--r--.  1 root root  447 Feb  7 21:56 grub
+-rw-r--r--.  1 root root 1756 Oct 13  2021 nss
+-rw-r--r--.  1 root root  119 Aug  6  2019 useradd
+[root@vm1 default]# cat useradd
+# useradd defaults file
+GROUP=100
+HOME=/home
+INACTIVE=-1
+EXPIRE=
+SHELL=/bin/bash
+SKEL=/etc/skel
+CREATE_MAIL_SPOOL=yes
+
+[root@vm1 default]# tail /etc/passwd
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+chrony:x:997:993::/var/lib/chrony:/sbin/nologin
+ntp:x:38:38::/etc/ntp:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+admin2316:x:1000:1000:Cloud User:/home/admin2316:/bin/bash
+jsmith:x:1001:1001:Jane smith:/home/jane_smith:/bin/dash
+test:x:1002:1002:test user:/home/test:/bin/bash
+zach:x:1003:1003::/home/zach:/bin/bash
+[root@vm1 default]# chsh --help
+
+Usage:
+ chsh [options] [username]
+
+Options:
+ -s, --shell <shell>  specify login shell
+ -l, --list-shells    print list of shells and exit
+
+ -u, --help     display this help and exit
+ -v, --version  output version information and exit
+
+For more details see chsh(1).
+[root@vm1 default]# chsh -l
+/bin/sh
+/bin/bash
+/usr/bin/sh
+/usr/bin/bash
+/bin/tcsh
+/bin/csh
+[root@vm1 default]# sudo tail /etc/shadow
+rpc:!!:19030:0:99999:7:::
+tss:!!:19030::::::
+postfix:!!:19030::::::
+chrony:!!:19030::::::
+ntp:!!:19030::::::
+tcpdump:!!:19030::::::
+admin2316:$6$AjkemcBnYbprhb05$DG5XqJY7etRp6lWMkJ5QM3UYdhJBnwEMOJi8t8fcqR4Del7h1DqKnNwVryA8/d8ZFUjJAs.EOSF1V9OXuDnbo0:19109:0:99999:7:::
+jsmith:!!:19109:0:99999:7::19109:
+test:$6$JexkZgU4$A2U9Qd.AhIPu9dfgtJLyFBSWF7XXsZQ2RMOFt/p.mul/cf1J8qhVf3exbiyZhJtDkcpYBs6RFADij/hPLujFj.:19109:0:99999:7:::
+zach:$6$AcDpqD.L$lpfW79wRbR7kkC4QvD3W7l3FMlHXI31i1BEZ.0ufTGcBCp17VbtyIuX/AT/QuMnijg5ZiXgTL.3qoV84.c.3n.:19109:0:99999:7:::
+[root@vm1 default]# tail /etc/group
+chrony:x:993:
+ntp:x:38:
+stapusr:x:156:
+stapsys:x:157:
+stapdev:x:158:
+tcpdump:x:72:
+admin2316:x:1000:
+jsmith:x:1001:
+test:x:1002:
+zach:x:1003:
+
+
+   40  history
+
+ 1  sudo less /etc/login.defs
+    2  cd /etc/useradd
+    3  cd /etc/default
+    4  ls -la
+    5  cat useradd
+    6  tail /etc/passwd
+    7  chsh --help
+    8  chsh -l
+    9  sudo tail /etc/shadow
+   10  tail /etc/group
+   11  history
+
+
+groupadd --help
+   43  sudo groupadd sales
+   44  sudo groupadd g_test G2_test
+   45  cd /etc/group
+   46  tail /etc/group
+   47  groupmod --help
+   48  sudo groupmod -n Test test
+   49  tail /etc/group
+   50  sudo id zach
+   51  sudo gpasswd -a zach sales
+   52  sudo id zach
+   53  sudo gpasswd -d zach sales
+   54  sudo id zach
+   55  sudo gpasswd -a zach sales
+   56  sudo gpasswd -A zach sales
+   57  sudo id zach
+   58  sudo gpasswd -A test sales
+   59  history
+
+  84  groups admin2316
+   85  ls /etc/passwd
+   86  tail /etc/passwd
+   87  chown jsmith:sales file1.txt
+   88  sudo chown jsmith:sales file1.txt
+   89  ls -la f*
+   90  tail /etc/group
+   91  man getent
+   92  getent passwd jsmith
+   93  sudo getent shadow zach
+   94  getent group sales
+   95  getent man
+   96  man getent
+   97  getent group zach
+   98  cat /etc/group | grep zach
+   99  cat /etc/group
+  100  history
+  101  getent passwd jasmi*
+  102  getent passwd jsmi*
+  103  getent passwd jsmith
+  104  getent group jsmith
+  105  cat /etc/group jsmith
+  106  cat /etc/group | grep jsmith
+
+ touch file1 file2 file3
+    2  sudo groupadd accounts sales marketing
+    3  sudo groupadd accounts
+    4  sudo groupadd sales
+    5  sudo groupadd marketing
+    6  ls -la
+    7  chown root:accounts file1
+    8  sudo chown root:accounts file1
+    9  ls -la
+   10  less /etc/fstab
+   11  getfacl file1
+   12  man getfacl
+   13  getfacl file1 -t
+   14  man getfacl
+   15  man setfacl
+   16  ls -la
+   17  setfacl -m o::w file1
+   18  sudo setfacl -m o::w file1
+   19  ls -la
+   20  sudo setfacl -m o::r file1
+   21  ls -la
+   22  sudo setfacl -m o::rw file1
+   23  ls -la
+   24  setfacl -m u:admin2316:rw file1
+   25  sudo setfacl -m u:admin2316:rw file1
+   26  la -la | grep file1
+   27  ls -la | grep file1
+   28  getfacl file1
+   29  ls -la | grep file1
+   30  setfacl -m g:accounts:rwx file2
+   31  ls -la | grep file2
+   32  getfacl accounts
+   33  getfacl file2
+   34  mkdir test
+   35  ls -la | grep test
+   36  getfacl test
+   37  man getfacl
+   38  getfacl -d
+   39  getfacl -d file1
+   40  setfacl d:g:sales:rw test
+   41  setfacl -m d:g:sales:rw test
+   42  getfacl test
+   43  mkdir corpdata
+   44  chmod o+t corpdata
+   45  ls -l
+   46  tail /etc/passwd
+   47  sudo useradd rocky
+   48  sudo passwd rocky
+   49  touch maa
+   50  ls -la
+   51  ls -l
+   52  man gpasswd
+   53  gpasswd -a rocky corpdata
+   54  setfacl -m d:u:rocky:rw corpdata
+   55  getfacl corpdata
+   56  su rocky
+   57  history
+
