@@ -1,0 +1,5 @@
+SourceHostname,SourceIP,Process,DestinationIP,RemotePort,PortStatus,PingStatus
+ubuntu,10.0.0.5,python3,52.239.192.4,443,True,False
+ubuntu,10.0.0.5,python3,52.239.156.196,443,True,False
+ubuntu,10.0.0.5,ruby,52.167.145.177,443,True,False
+ubuntu,10.0.0.5,ruby,52.167.107.67,443,True,False

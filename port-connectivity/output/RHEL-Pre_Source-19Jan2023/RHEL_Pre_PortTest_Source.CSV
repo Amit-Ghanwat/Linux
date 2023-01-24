@@ -1,0 +1,5 @@
+SourceHostname,SourceIP,Process,DestinationIP,RemotePort,PortStatus,PingStatus
+rhel,10.0.0.6,python3,52.239.192.4,443,True,False
+rhel,10.0.0.6,python3,52.239.156.196,443,True,False
+rhel,10.0.0.6,ruby,52.167.145.177,443,True,False
+rhel,10.0.0.6,ruby,52.167.107.67,443,True,False
